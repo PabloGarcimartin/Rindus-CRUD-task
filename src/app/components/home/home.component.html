@@ -1,0 +1,35 @@
+
+<div class="row mt-4">
+  <div class="col-11">
+    <h1>POSTS</h1>
+  </div>
+  <div class="col-1">
+    <button type="button" name="create-post" class="btn btn-primary w-100" (click)="createPost()">Crear</button>
+  </div>
+</div>
+<div class="row mt-2">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>User Id</th>
+      <th>Título</th>
+      <th>Contenido</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of posts">
+      <td>{{ post.id }}</td>
+      <td>{{ post.userId }}</td>
+      <td>{{ post.title }}</td>
+      <!-- <td> {{ (post.body.length>50)? (post.body | slice:0:50)+'...':(post.body) }}</td> -->
+      <td> {{ post.body }}</td>
+      <td>
+        <button type="button" name="edit-post" class="btn btn-warning"><fa-icon [icon]="faEdit"></fa-icon></button>
+        <button type="button" name="delete-post" class="btn btn-danger"><fa-icon [icon]="faDelete"></fa-icon></button>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+<div>

@@ -8,4 +8,5 @@ Use Cases:
 Optional Tasks:
     - Include a search field in the posts list
     - Provide row sorting in the posts list
-    - Implement CRUD for comments in posts (to do)
+    - Implement CRUD for comments in posts
+    

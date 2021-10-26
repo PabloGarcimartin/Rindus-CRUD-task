@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JsonplaceholderService } from 'src/app/services/jsonplaceholder.service';
@@ -11,9 +10,6 @@ import { JsonplaceholderService } from 'src/app/services/jsonplaceholder.service
 export class EditPostComponent implements OnInit {
   @Input() postData: any;
   formulario: FormGroup;
-  comments: any[];
-  dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject<any>();
   responseCode: number = 0;
 
   constructor(
@@ -31,15 +27,6 @@ export class EditPostComponent implements OnInit {
 
   ngOnInit(): void {
     this.crearFormulario();
-    this.jsonplaceholderService.getComments(this.postData[0])
-      .subscribe(data => {
-        this.comments = (data as any);
-      });
-
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 10
-    };
   }
 
   editPost(){

@@ -5,16 +5,16 @@ import { Post } from 'src/app/interfaces/post';
 import { JsonplaceholderService } from 'src/app/services/jsonplaceholder.service';
 
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { DeletePostComponent } from 'src/app/components/home/modals/delete-post/delete-post.component';
-import { EditPostComponent } from 'src/app/components/home/modals/edit-post/edit-post.component';
-import { CreatePostComponent } from 'src/app/components/home/modals/create-post/create-post.component';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { DeletePostComponent } from 'src/app/components/posts/modals/delete-post/delete-post.component';
+import { EditPostComponent } from 'src/app/components/posts/modals/edit-post/edit-post.component';
+import { CreatePostComponent } from 'src/app/components/posts/modals/create-post/create-post.component';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './posts.component.html'
 })
-export class HomeComponent implements OnInit {
+export class PostsComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();

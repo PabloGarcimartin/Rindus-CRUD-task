@@ -7,21 +7,23 @@ import { DataTablesModule } from "angular-datatables";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
+import { PostsComponent } from './components/posts/posts.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DeletePostComponent } from './components/home/modals/delete-post/delete-post.component';
-import { EditPostComponent } from './components/home/modals/edit-post/edit-post.component';
-import { CreatePostComponent } from './components/home/modals/create-post/create-post.component';
+import { DeletePostComponent } from './components/posts/modals/delete-post/delete-post.component';
+import { EditPostComponent } from './components/posts/modals/edit-post/edit-post.component';
+import { CreatePostComponent } from './components/posts/modals/create-post/create-post.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    PostsComponent,
     NavbarComponent,
     DeletePostComponent,
     EditPostComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

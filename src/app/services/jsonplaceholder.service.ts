@@ -39,4 +39,16 @@ export class JsonplaceholderService {
     delete(id:number): Observable<any> {
       return this.http.delete(`${baseUrl}/posts/${id}`, {observe: 'response'});
     }
+
+    createComment(data:any): Observable<any> {
+      return this.http.post(`${baseUrl}/comments`, data, {observe: 'response'});
+    }
+
+    updateComment(id:number, data:any): Observable<any> {
+      return this.http.put(`${baseUrl}/comments/${id}`, data, {observe: 'response'});
+    }
+
+    deleteComment(id:number): Observable<any> {
+      return this.http.delete(`${baseUrl}/comments/${id}`, {observe: 'response'});
+    }
 }

@@ -14,44 +14,22 @@
     </div>
     <div class="form-group row">
       <label for="title" class="col-2 col-form-label">Título</label>
-      <div class="col-8">
+      <div class="col-10">
         <input type="text" class="form-control" name="title" value="" formControlName="title">
       </div>
     </div>
     <div class="form-group row mt-3">
       <label for="body" class="col-2 col-form-label">Contenido</label>
-      <div class="col-8">
+      <div class="col-10">
         <textarea name="body" rows="4" class="w-100" formControlName="body"></textarea>
       </div>
     </div>
-    <div class="row mt-3">
-      <div class="col-12">
-        COMENTARIOS
-      </div>
-      <div class="col-12">
-        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="row-border hover">
-          <thead>
-          <tr>
-            <th>ID</th>
-            <th>Email</th>
-            <th>Título</th>
-            <th>Comentario</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let comment of comments">
-            <td>{{ comment.id }}</td>
-            <td>{{ comment.email }}</td>
-            <td>{{ comment.name }}</td>
-            <td>{{ comment.body }}</td>
-          </tr>
-        </tbody>
-        </table>
-      </div>
-    </div>
   </div>
-  <div class="modal-footer">
+  <div class="modal-footer" style="border-top:none">
     <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss()">Cancelar</button>
     <button type="submit" class="btn btn-primary">Editar</button>
   </div>
 </form>
+  <div class="modal-footer">
+    <app-comments [postId]="postData[0]"></app-comments>
+  </div>

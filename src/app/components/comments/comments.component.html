@@ -1,0 +1,69 @@
+<div class="row mt-3">
+  <div class="col-12 mb-2">
+    <h4 class="modal-title" id="modal-basic-title">Comentarios</h4>
+  </div>
+  <div class="alert alert-danger col-12" *ngIf="responseCodeUpdate && responseCodeUpdate != 2">
+    Hubo un error al editar el comentario.
+  </div>
+  <div class="alert alert-success col-12" *ngIf="responseCodeUpdate == 2">
+    Comentario editado con éxito.
+  </div>
+  <div class="alert alert-danger col-12" *ngIf="responseCodeDelete && responseCodeDelete != 2">
+    Hubo un error al borrar el comentario.
+  </div>
+  <div class="alert alert-success col-12" *ngIf="responseCodeDelete == 2">
+    Comentario borrado con éxito.
+  </div>
+  <div class="col-12">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="DataTables_Table_2" class="row-border hover">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Título</th>
+        <th>Comentario</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let comment of comments">
+        <td>{{ comment.id }}</td>
+        <td>{{ comment.email }}</td>
+        <td><textarea id="{{ 'commentName_'+comment.id }}" rows="3" class="w-100">{{ comment.name }}</textarea></td>
+        <td><textarea id="{{ 'commentBody_'+comment.id }}" rows="3" class="w-100">{{ comment.body }}</textarea></td>
+        <td>
+          <button type="button" name="edit-comment" class="btn btn-warning"><fa-icon [icon]="faEdit"></fa-icon></button>
+          <button type="button" name="delete-comment" class="btn btn-danger"><fa-icon [icon]="faDelete"></fa-icon></button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-3">
+    <label for="email">Email</label>
+  </div>
+  <div class="col-3">
+    <label for="title">Título</label>
+  </div>
+  <div class="col-4">
+    <label for="body">Comentario</label>
+  </div>
+  <div class="col-2">
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+    <input type="text" id="newCommentEmail" name="email" value="" class="w-100">
+  </div>
+  <div class="col-3">
+    <input type="text" id="newCommentName" name="title" class="w-100" value="">
+  </div>
+  <div class="col-4">
+    <textarea name="body" id="newCommentBody" rows="3" class="w-100"></textarea>
+  </div>
+  <div class="col-2">
+    <button type="button" name="create-comment" class="btn btn-primary" (click)="createComment()">Añadir Comentario</button>
+  </div>
+</div>

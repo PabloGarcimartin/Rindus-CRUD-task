@@ -9,7 +9,7 @@ import { JsonplaceholderService } from 'src/app/services/jsonplaceholder.service
 })
 export class CreatePostComponent implements OnInit {
   formulario: FormGroup;
-  postId: number = 0;
+  responseCode: number = 0;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -34,11 +34,19 @@ export class CreatePostComponent implements OnInit {
       title: this.formulario.value.title,
       body: this.formulario.value.body,
     }
-    this.jsonplaceholderService.create( data ).subscribe( result => {
-      console.log('Creado con éxito!');
-      console.log(result);
-    });
-    this.activeModal.close();
-  }
+    this.jsonplaceholderService.create( data ).subscribe( response => {
 
+      console.log(response);
+      this.responseCode = Number(response.status.toString()[0]);
+
+      if( this.responseCode === 2 ){
+        console.log('Creado con éxito!');
+      } else {
+        console.log('Error al crear el post');
+      }
+      setTimeout( () => {
+        this.activeModal.close();
+      }, 2000 );
+    });
+  }
 }

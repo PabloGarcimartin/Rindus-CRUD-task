@@ -29,14 +29,14 @@ export class JsonplaceholderService {
     }
 
     create(data:any): Observable<any> {
-      return this.http.post(`${baseUrl}/posts`, data);
+      return this.http.post(`${baseUrl}/posts`, data, {observe: 'response'});
     }
 
     update(id:number, data:any): Observable<any> {
-      return this.http.put(`${baseUrl}/posts/${id}`, data);
+      return this.http.put(`${baseUrl}/posts/${id}`, data, {observe: 'response'});
     }
 
     delete(id:number): Observable<any> {
-      return this.http.delete(`${baseUrl}/posts/${id}`);
+      return this.http.delete(`${baseUrl}/posts/${id}`, {observe: 'response'});
     }
 }

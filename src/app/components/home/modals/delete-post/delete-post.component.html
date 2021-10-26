@@ -5,6 +5,12 @@
   </button>
 </div>
 <div class="modal-body">
+  <div class="alert alert-danger row" *ngIf="responseCode != 0 && responseCode != 2">
+    Hubo un error al eliminar el Post.
+  </div>
+  <div class="alert alert-success row" *ngIf="responseCode == 2">
+    Post eliminado con éxito.
+  </div>
   <form>
     <div class="form-group">
       <label for="dateOfBirth">Vas a eliminar el post <b>{{postTitle}}</b></label>

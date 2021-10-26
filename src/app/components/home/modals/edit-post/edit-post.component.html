@@ -6,43 +6,49 @@
 </div>
 <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="editPost()">
   <div class="modal-body">
-      <div class="form-group row">
-        <label for="title" class="col-2 col-form-label">Título</label>
-        <div class="col-8">
-          <input type="text" class="form-control" name="title" value="" formControlName="title">
-        </div>
+    <div class="alert alert-danger row" *ngIf="responseCode != 0 && responseCode != 2">
+      Hubo un error al editar el Post.
+    </div>
+    <div class="alert alert-success row" *ngIf="responseCode == 2">
+      Post editado con éxito.
+    </div>
+    <div class="form-group row">
+      <label for="title" class="col-2 col-form-label">Título</label>
+      <div class="col-8">
+        <input type="text" class="form-control" name="title" value="" formControlName="title">
       </div>
-      <div class="form-group row mt-3">
-        <label for="body" class="col-2 col-form-label">Contenido</label>
-        <div class="col-8">
-          <textarea name="body" rows="4" class="w-100" formControlName="body"></textarea>
-        </div>
+    </div>
+    <div class="form-group row mt-3">
+      <label for="body" class="col-2 col-form-label">Contenido</label>
+      <div class="col-8">
+        <textarea name="body" rows="4" class="w-100" formControlName="body"></textarea>
       </div>
-      <div class="row mt-3">
-        <div class="col-12">
-          COMENTARIOS
-        </div>
-        <div class="col-12">
-          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="row-border hover">
-            <thead>
-            <tr>
-              <th>ID</th>
-              <th>Email</th>
-              <th>Título</th>
-              <th>Comentario</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let comment of comments">
-              <td>{{ comment.id }}</td>
-              <td>{{ comment.email }}</td>
-              <td>{{ comment.name }}</td>
-              <td>{{ comment.body }}</td>
-            </tr>
-          </tbody>
-          </table>
-        </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12">
+        COMENTARIOS
       </div>
+      <div class="col-12">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="row-border hover">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Título</th>
+            <th>Comentario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let comment of comments">
+            <td>{{ comment.id }}</td>
+            <td>{{ comment.email }}</td>
+            <td>{{ comment.name }}</td>
+            <td>{{ comment.body }}</td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss()">Cancelar</button>

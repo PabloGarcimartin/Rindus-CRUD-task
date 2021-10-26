@@ -14,6 +14,7 @@ export class EditPostComponent implements OnInit {
   comments: any[];
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
+  responseCode: number = 0;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -49,11 +50,20 @@ export class EditPostComponent implements OnInit {
       title: this.formulario.value.title,
       body: this.formulario.value.body,
     }
-    this.jsonplaceholderService.update( this.postData[0] , data ).subscribe( result => {
-      console.log('Editado!');
-      console.log(result);
+    this.jsonplaceholderService.update( this.postData[0] , data ).subscribe(  response => {
+
+      console.log(response);
+      this.responseCode = Number(response.status.toString()[0]);
+
+      if( this.responseCode === 2 ){
+        console.log('Editado con éxito!');
+      } else {
+        console.log('Error al editar el post');
+      }
+      setTimeout( () => {
+        this.activeModal.close();
+      }, 2000 );
     });
-    this.activeModal.close();
   }
 
 }
